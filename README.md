@@ -45,73 +45,73 @@ exit
 
 Login through your user
 ```bash
-  ssh yourname@ip-address
+ssh yourname@ip-address
 ```
 
 ```bash
-    mkdir -p ~/.ssh
+mkdir -p ~/.ssh
 ```
 
 ### Create a key-pair to login
 Open another terminal in your local and run these commands 
 ```bash
-    ssh-keygen -b 4096
+ssh-keygen -b 4096
 ```
 ```bash
-    scp ~/.ssh/id_rsa.pub yourname@ip-address:~/.ssh/authorized_keys
+scp ~/.ssh/id_rsa.pub yourname@ip-address:~/.ssh/authorized_keys
 ```
 
 Go to your VPS server
 ```bash
-    cd ~
+cd ~
 ```
 ```bash
-    ls .ssh #check if authorized_keys folder is there or not
+ls .ssh #check if authorized_keys folder is there or not
 ```
 ```bash
-    ssh chmod 700 ~/.ssh/
+ssh chmod 700 ~/.ssh/
 ```
 ```bash
-    ssh chmod 600 ~/.ssh/*
+ssh chmod 600 ~/.ssh/*
 ```
 ```bash
-    sudo nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config
 ```
 ```bash
-    # Go Down
-    LoginGraceTime 2m
-    PermitRootLogin yes # make it no and if commented uncomment it 
+# Go Down
+LoginGraceTime 2m
+PermitRootLogin yes # make it no and if commented uncomment it 
 ```
 ```bash
-    # Go Down
-    PasswordAuthentication yes # make it no and if commented uncomment it 
-    PermitEmptyPasswords no
+# Go Down
+PasswordAuthentication yes # make it no and if commented uncomment it 
+PermitEmptyPasswords no
 ```
 ```bash
-    ssh systemctl restart sshd
+ssh systemctl restart sshd
 ```
 ```bash
-    sudo apt-get install ufw
+sudo apt-get install ufw
 ```
 ```bash
-    sudo ufw default allow outgoing
+sudo ufw default allow outgoing
 ```
 ```bash
-    sudo ufw default deny incoming
+sudo ufw default deny incoming
 ```
 ```bash
-    sudo ufw allow ssh
+sudo ufw allow ssh
 ```
 ```bash
-    sudo ufw allow ssh
+sudo ufw allow ssh
 ```
 ```bash
-    sudo ufw allow 8000
+sudo ufw allow 8000
 ```
 ```bash
-    sudo ufw enable
+sudo ufw enable
 ```
 ```bash
-    sudo ufw status
+sudo ufw status
 ```
     
